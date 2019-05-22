@@ -1,14 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
-import { CoreRoutingModule } from './core-routing.module';
-import { DashboardComponent } from './containers/dashboard/dashboard.component';
+import { CoreRoutingModule } from "./core-routing.module";
 
 @NgModule({
-  declarations: [DashboardComponent],
-  imports: [
-    CommonModule,
-    CoreRoutingModule
-  ]
+  imports: [CommonModule, CoreRoutingModule]
 })
-export class CoreModule { }
+export class CoreModule {}

@@ -1,0 +1,58 @@
+<div class="component-style table-component">
+  <table class="table table-hover">
+    <tr>
+      <th *ngFor="let itemColum of tHeader">{{ itemColum }}</th>
+    </tr>
+    <ng-container *ngFor="let report of _totalReport; index as i">
+      <tr
+        sj-table-body
+        [report]="report"
+        [columns]="columns"
+        (click)="toogleItems(i)"
+      ></tr>
+      <ng-container *ngIf="report.reportAnHour">
+        <ng-container
+          *ngFor="let reportAnHour of report.reportAnHour; index as j"
+        >
+          <tr
+            [ngStyle]="{
+              display: activateIndex.includes(i) ? 'table-row' : 'none'
+            }"
+            bgcolor="#add8e6"
+            sj-table-body
+            [report]="reportAnHour"
+            [columns]="columns"
+            (click)="toogleInnerItems(j)"
+          ></tr>
+          <ng-container *ngIf="reportAnHour.reportByLead">
+            <ng-container
+              *ngFor="let reportByLead of reportAnHour.reportByLead"
+            >
+              <tr
+                [ngStyle]="{
+                  display: activateInnerIndex.includes(j) ? 'table-row' : 'none'
+                }"
+                bgcolor="#e6bbad"
+                sj-table-body
+                [report]="reportByLead"
+                [columns]="columns"
+              ></tr>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </table>
+</div>
+
+<!--
+        <ng-container *ngIf="reportAnHour.reportByLead">
+          <tr
+            bgcolor="#e6bbad"
+            *ngFor="let reportByLead of reportAnHour.reportByLead"
+            sj-table-body
+            [report]="reportByLead"
+            [columns]="columns"
+          ></tr>
+        </ng-container>
+-->

@@ -1,3 +1,24 @@
-<p>
-  dashboard works!
-</p>
+<section *ngIf="_totalReport">
+  <div class="row">
+    <div class="col-12 m-2">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary">Compainigns</button>
+        <button type="button" class="btn btn-secondary">Buyers</button>
+        <button type="button" class="btn btn-secondary">Dayly</button>
+        <button type="button" class="btn btn-secondary">Hourly</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="overflow-x col-12">
+      <sj-table-header [_totalReport]="_totalReport"></sj-table-header>
+    </div>
+  </div>
+</section>
+<ng-template #elseBlock>
+  <div class="d-flex justify-content-center align-items-center h-100vh">
+    <p class="h1">
+      Report is empty :(
+    </p>
+  </div>
+</ng-template>
