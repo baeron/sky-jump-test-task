@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, EventEmitter, Output } from "@angular/core";
 import { Report } from "../../../../../models/report";
 
 @Component({
@@ -37,6 +37,11 @@ export class TableHeaderComponent {
     "RPL"
   ];
   @Input() _totalReport: Report[];
+  // tslint:disable-next-line:no-output-on-prefix
+  @Output() onSelect = new EventEmitter<any>();
+  // tslint:disable-next-line:no-output-on-prefix
+  @Output() onSelectRow = new EventEmitter<any>();
+
   toogleItems(index: number) {
     if (this.activateIndex.includes(index)) {
       this.activateIndex = this.activateIndex.filter(item => item !== index);
@@ -46,9 +51,20 @@ export class TableHeaderComponent {
   }
   toogleInnerItems(index: number) {
     if (this.activateInnerIndex.includes(index)) {
-      this.activateInnerIndex = this.activateInnerIndex.filter(item => item !== index);
+      this.activateInnerIndex = this.activateInnerIndex.filter(
+        item => item !== index
+      );
     } else {
       this.activateInnerIndex.push(index);
     }
+  }
+  selectCol(col: string) {
+    this.onSelect.emit(col);
+  }
+
+  onSelected(row) {
+    // tslint:disable-next-line:no-debugger
+    debugger;
+    this.onSelectRow.emit(row);
   }
 }

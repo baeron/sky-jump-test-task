@@ -1,7 +1,9 @@
 <div class="component-style table-component">
   <table class="table table-hover">
     <tr>
-      <th *ngFor="let itemColum of tHeader">{{ itemColum }}</th>
+      <th *ngFor="let itemColum of tHeader" (click)="selectCol(itemColum)" style="cursor: pointer;"> 
+        {{ itemColum }}
+      </th>
     </tr>
     <ng-container *ngFor="let report of _totalReport; index as i">
       <tr
@@ -9,6 +11,7 @@
         [report]="report"
         [columns]="columns"
         (click)="toogleItems(i)"
+        (onSelect)="onSelected($event)"
       ></tr>
       <ng-container *ngIf="report.reportAnHour">
         <ng-container

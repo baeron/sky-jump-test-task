@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { Report } from "../../../../../models/report";
 
 @Component({
@@ -10,4 +10,11 @@ import { Report } from "../../../../../models/report";
 export class TableBodyComponent {
   @Input() report: Report;
   @Input() columns: string[];
+  // tslint:disable-next-line:no-output-on-prefix
+  @Output() onSelect = new EventEmitter<any>();
+
+  selectRow(row) {
+    this.onSelect.emit(row);
+  }
+
 }

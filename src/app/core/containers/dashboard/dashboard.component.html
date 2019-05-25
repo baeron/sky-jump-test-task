@@ -1,6 +1,6 @@
 <section *ngIf="_totalReport">
   <div class="row">
-    <div class="col-12 m-2">
+    <div class="col-4 m-2">
       <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-secondary">Compainigns</button>
         <button type="button" class="btn btn-secondary">Buyers</button>
@@ -8,10 +8,49 @@
         <button type="button" class="btn btn-secondary">Hourly</button>
       </div>
     </div>
+    <div class="m-2">
+      <select
+        class="form-control"
+        (change)="selectFirstOption($event.target.value)"
+      >
+        <option selected disabled>First Group</option>
+        <option *ngFor="let level of _levelNames">
+          Type: {{ level.name }}
+        </option>
+      </select>
+    </div>
+    <div class="m-2">
+      <select
+        class="form-control"
+        (change)="selectSecondOption($event.target.value)"
+      >
+        <option selected disabled>Second Group</option>
+        <option *ngFor="let level of _levelNames">
+          {{ level.name }}
+        </option>
+      </select>
+    </div>
+    <ng-container *ngIf="secondSelectedOption">
+      <div class="m-2">
+        <select
+          class="form-control"
+          (change)="selectThirdOption($event.target.value)"
+        >
+          <option selected disabled>Second Group</option>
+          <option *ngFor="let level of _levelNames">
+            Type: {{ level.name }}
+          </option>
+        </select>
+      </div>
+    </ng-container>
   </div>
   <div class="row">
     <div class="overflow-x col-12">
-      <sj-table-header [_totalReport]="_totalReport"></sj-table-header>
+      <sj-table-header
+        [_totalReport]="_totalReport"
+        (onSelect)="onSelect($event)"
+        (onSelectRow)="onSelectRow($event)"
+      ></sj-table-header>
     </div>
   </div>
 </section>

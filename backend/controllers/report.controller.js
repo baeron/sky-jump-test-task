@@ -1,5 +1,19 @@
 const TOTAL_REPORT = [
   {
+    id: 6,
+    source: "GoogleDispplay",
+    leads: 497,
+    percentOfLeads: 16.4,
+    revenueLeads: 5510.82,
+    revenueCAlls: 1371,
+    revenueFull: 6883.82,
+    cost: 4583.71,
+    pl: 2300.11,
+    ROI: 50.2,
+    CPL: 9.22,
+    RPL: 13.85
+  },
+  {
     id: 1,
     source: "Facebook",
     leads: 1.672,
@@ -12,6 +26,7 @@ const TOTAL_REPORT = [
     ROI: 31.9,
     CPL: 10.43,
     RPL: 13.76,
+    /*
     reportAnHour: [
       {
         id: 2,
@@ -58,7 +73,7 @@ const TOTAL_REPORT = [
         ]
       },
       {
-        id: 2,
+        id: 5,
         source: "3:00 am",
         leads: 1.672,
         percentOfLeads: 55,
@@ -72,14 +87,15 @@ const TOTAL_REPORT = [
         RPL: 13.76
       }
     ]
+    */
   }
 ];
 exports.getAll = (req, res) => {
-	try {
-		res.send(TOTAL_REPORT);
-	} catch (err) {
-		res.status(500).send({
-			message: err.message
-		});
-	}
+  try {
+    res.send(TOTAL_REPORT);
+  } catch (err) {
+    res.status(500).send({
+      message: err.message
+    });
+  }
 };
